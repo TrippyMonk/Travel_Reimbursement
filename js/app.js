@@ -6,7 +6,7 @@ document.querySelector('#itinerant-btn').addEventListener('click', showItinerant
 
 
 
-
-document.querySelector('section').addEventListener('click', addMileageRow);
-document.querySelector('section').addEventListener('click', deleteMileageRow);
-
+//Control Mileage Boxes
+document.querySelector('.add-row').addEventListener('click', addMileageRow);
+document.querySelector('.delete-row').addEventListener('click', deleteMileageRow);
+document.querySelector('#calculate-mileage').addEventListener('click', calculateMileage);
