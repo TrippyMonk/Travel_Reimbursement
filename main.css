@@ -1,0 +1,18 @@
+.btn {
+    margin: .2em;
+}
+
+#travel-selection {
+    padding-bottom: 5em;
+}
+
+i {
+    margin: 1em;
+}
+
+.itinerant-questions, .form-heading {
+    margin-left: 13%;
+}
+.question-text {
+    margin-left: 3em;
+}
