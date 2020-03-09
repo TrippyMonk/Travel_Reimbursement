@@ -65,8 +65,8 @@
 
   <!----------------------------- ITINERANT TRAVEL ----------------------------->
     <section id="itinerant" class="d-none">
-      <form id="itinerant-mileage">
-        <div class="form-group form-row justify-content-center" id="row-1">
+      <form class="mileage-form">
+        <div class="form-group form-row justify-content-center" id="Irow-1">
              <div class="col-sm-2 col-md-1">
                <label for="date-1">Date</label>
                <input type="date" id="date-1" class="form-control">
@@ -76,7 +76,7 @@
                <input type="text" class="form-control" id="origin-1" placeholder="Street Address, City, State, Zip">
              </div>
              <div class="col-sm-3 col-md-3">
-               <label for="destination-1">Destionation Address</label>
+               <label for="destination-1">Destination Address</label>
                <input type="text" class="form-control" id="destination-1" placeholder="Street Address, City, State, Zip">
              </div>
              <div class="col-sm-2 col-md-1">
@@ -87,7 +87,7 @@
                <label for="calculated-1">Calculated Miles</label>
                <input type="text" class="form-control" id="calculated-1" placeholder="0" value="" disabled>
              </div>
-           </div>
+          </div>
       </form>
       <div class="form-group form-row justify-content-center">
         <a href='#'><i class="fa fa-plus add-row" style="color: blue;"></i></a>
@@ -99,57 +99,95 @@
       </div>
     </section>
 
-    <!-- <section id="single-day">
-      <div class="form-group row itinerant-questions">
+<!-- Single Day Travel -->
+    <section id="single-day" class="d-none">
+      <form class="mileage-form">
+        <div class="form-group form-row justify-content-center" id="Srow-1">
+          <div class="col-sm-2 col-md-1">
+            <label for="date-1">Date</label>
+            <input type="date" id="date-1" class="form-control">
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <label for="origin-1">Origin Address</label>
+            <input type="text" class="form-control" id="origin-1" placeholder="Street Address, City, State, Zip">
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <label for="destination-1">Destination Address</label>
+            <input type="text" class="form-control" id="destination-1" placeholder="Street Address, City, State, Zip">
+          </div>
+          <div class="col-sm-2 col-md-1">
+            <label for="personal-1">Personal Miles</label>
+            <input type="text" class="form-control" id="personal-1" placeholder="0">
+          </div>
+          <div class="col-sm-2 col-md-1">
+            <label for="calculated-1">Calculated Miles</label>
+            <input type="text" class="form-control" id="calculated-1" placeholder="0" value="" disabled>
+          </div>
+        </div>
+        <div class="form-group form-row justify-content-center" id="Srow-2">
+          <div class="col-sm-2 col-md-1">
+            <input type="date" class="form-control" id="date-2">
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <input type="text" class="form-control" id="origin-2" placeholder="Street Address, City, State, Zip">
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <input type="text" class="form-control" id="destination-2" placeholder="Street Address, City, State, Zip">
+          </div>
+          <div class="col-sm-2 col-md-1">
+            <input type="text" class="form-control" id="personal-2" placeholder="0">
+          </div>
+          <div class="col-sm-2 col-md-1">
+            <input type="text" class="form-control" id="calculated-2" placeholder="0" disabled>
+          </div>
+        </div>
+      </form>
+      <div class="form-group form-row justify-content-center">
+        <a href='#'><i class="fa fa-plus add-row" style="color: blue;"></i></a>
+        <a href='#'><i class="fa fa-minus delete-row" style="color: red;"></i></a>
+      </div>
+
+<!-- Single Question #1 -->
+      <div id="single-question-1" class="form-group row itinerant-questions">
         <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="itinerant-cb-3" value="yes">
+          <input type="checkbox" class="form-check-input" id="single-cb-1" value="yes" checked="false" onclick="showAdditionalCosts(this)">
           <label for="itinerant-cb-1" class="form-check-label">Yes</label>
         </div>
         <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="itinerant-cb-4" value="no">
+          <input type="checkbox" class="form-check-input" id="single-cb-2" value="no">
           <label for="itinerant-cb-2" class="form-check-label">No</label>
         </div>
-        <span class="question-text">Did you incur additional costs (registration, parking, etc.) besides mileage/meals?</span>
-      </div>
-      <div class="form-group row itinerant-questions">
-        <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="itinerant-cb-1" value="yes">
-          <label for="itinerant-cb-1" class="form-check-label">Yes</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="itinerant-cb-2" value="no">
-          <label for="itinerant-cb-2" class="form-check-label">No</label>
-        </div>
-        <span class="question-text">Did total travel time, from departure to return, exceed 12 hours?</span>
+        <span id="question-text-2">Did you incur additional costs (registration, parking, etc.) besides mileage/meals?</span>
       </div>
 
-      <form id="single-day-mileage">
-        <h6 class="form-heading">Mileage:</h6>
-        <div class="form-group form-row justify-content-center">
-          <div class="col-sm-2 col-md-1">
-            <input type="date" class="form-control">
+      <form id="single-other-expense" class="d-none" action="">
+        <div class="form-group form-row">
+          <div id="single-meals-table" class="col-sm-6 col-md-1">
+            <input type="text" class="form-control" placeholder="Description">
           </div>
-          <div class="col-sm-3 col-md-3">
-            <input type="text" class="form-control" placeholder="Origin Address">
+          <div class="col-sm-6 col-md-1">
+            <input type="text" class="form-control" placeholder="Amount">
           </div>
-          <div class="col-sm-3 col-md-3">
-            <input type="text" class="form-control" placeholder="Destination Address">
-          </div>
-          <div class="col-sm-2 col-md-1">
-            <input type="text" class="form-control" placeholder="Personal Miles">
-          </div>
-          <div class="col-sm-2 col-md-1">
-            <input type="text" class="form-control" placeholder="Calculated Miles" disabled>
-          </div>
+          <a href='#'><i class="fa fa-plus add-row" style="color: blue;"></i></a>
+          <a href='#'><i class="fa fa-minus delete-row" style="color: red;"></i></a>
         </div>
-        </form>
-        <div class="form-group form-row justify-content-center">
-          <a href='#'><i class="fa fa-plus add-row"></i></a>
-        </div>
-    </section> -->
+      </form>
 
-  <script src="js/requests.js"></script>
-  <script src="js/perdiem.js"></script>
+<!-- Single Question #2 -->
+      <div id="single-question-2" class="form-group row itinerant-questions">
+        <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="single-cb-3" value="yes" checked="false" onclick="">
+          <label for="itinerant-cb-3" class="form-check-label">Yes</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="single-cb-4" value="no">
+          <label for="itinerant-cb-4" class="form-check-label">No</label>
+        </div>
+        <span id="question-text-1">Did total travel time, from departure to return, exceed 12 hours?</span>
+      </div>
+      
+    </section>
+
   <script src="js/ui.js"></script>
   <script src="js/app.js"></script>
   <!-- Optional JavaScript -->

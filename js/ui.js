@@ -1,3 +1,4 @@
+//Show Different Travel Options
 const showItinerant = () => {
   let section = document.getElementById('itinerant');
   if(section.classList.contains('d-none')) {
@@ -7,10 +8,21 @@ const showItinerant = () => {
   }
 }
 
+const showSingleDay = () => {
+  let section = document.getElementById('single-day');
+  if(section.classList.contains('d-none')) {
+    section.classList.replace('d-none','d-block');
+  } else {
+    section.classList.replace('d-block', 'd-none');
+  }
+}
+
+//Mileage Interactivity
 const addMileageRow = () => {
   //Get mileage form, grab the last div element visible, get the ID attribute, and return the number to the right of Row-
-  const prevRow = document.getElementById('itinerant-mileage').lastElementChild.getAttribute('id').split('-')[1];
+  const prevRow = document.querySelector('.mileage-form').lastElementChild.getAttribute('id').split('-')[1];
   const prevRowNum = parseInt(prevRow);
+  console.log(prevRowNum);
 
   //Create a new Div with an ID one number higher than last visible row
   const div = document.createElement('div');
@@ -34,18 +46,18 @@ const addMileageRow = () => {
     <input type="text" id="calculated-${div.id}" class="form-control" placeholder="0" value="" disabled>
     </div>`;
 
-  document.querySelector('#itinerant-mileage').insertAdjacentElement('beforeend', div);
+  document.querySelector('.mileage-form').insertAdjacentElement('beforeend', div);
 }
 
 const deleteMileageRow = () => {
-    const selection = document.querySelector('#itinerant-mileage');
+    const selection = document.querySelector('.mileage-form');
     selection.removeChild(selection.lastChild);
 }
 
 const calculateMileage = async () => {
     //Split up the addresses entered and store in appropriate variables
-    const originString = document.getElementById('origin-0').value.split(',');
-    const destinationString = document.getElementById('destination-0').value.split(',');
+    const originString = document.getElementById('origin-1').value.split(',');
+    const destinationString = document.getElementById('destination-1').value.split(',');
 
     const originAdminDistrict = originString[2];
     const originLocality = originString[1];
@@ -75,8 +87,18 @@ const calculateMileage = async () => {
     const travelDistance = Math.round(routeResponse.resourceSets[0].resources[0].travelDistance);
 
     //Check for any Personal Mileage Entered and Calculate Reimburseable Mileage
-    const personalMiles = document.getElementById('personal-0').value;
+    const personalMiles = document.getElementById('personal-1').value;
     const mileage = travelDistance - personalMiles;
     //Insert Reimburseable Mileage in Form
-    document.getElementById('calculated-0').value = mileage;
+    document.getElementById('calculated-1').value = mileage;
+}
+
+//Single Day Additional Costs Incurred
+const showAdditionalCosts = () => {
+  let expenseTable = document.getElementById('single-other-expense');
+  if (document.getElementById('single-cb-1').checked == true) {
+      expenseTable.classList.replace('d-none', 'd-block');
+  } else {
+      expenseTable.classList.replace('d-block', 'd-none');
+  }
 }
