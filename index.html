@@ -66,7 +66,7 @@
   <!----------------------------- ITINERANT TRAVEL ----------------------------->
     <section id="itinerant" class="d-none">
       <form class="mileage-form">
-        <div class="form-group form-row justify-content-center" id="Irow-1">
+        <div class="form-group form-row justify-content-center" id="row-1">
              <div class="col-sm-2 col-md-1">
                <label for="date-1">Date</label>
                <input type="date" id="date-1" class="form-control">
@@ -102,49 +102,53 @@
 <!-- Single Day Travel -->
     <section id="single-day" class="d-none">
       <form class="mileage-form">
-        <div class="form-group form-row justify-content-center" id="Srow-1">
+        <div class="form-group form-row justify-content-center" id="row-101">
           <div class="col-sm-2 col-md-1">
-            <label for="date-1">Date</label>
-            <input type="date" id="date-1" class="form-control">
+            <label for="date-101">Date</label>
+            <input type="date" id="date-101" class="form-control">
           </div>
           <div class="col-sm-3 col-md-3">
-            <label for="origin-1">Origin Address</label>
-            <input type="text" class="form-control" id="origin-1" placeholder="Street Address, City, State, Zip">
+            <label for="origin-101">Origin Address</label>
+            <input type="text" class="form-control" id="origin-101" placeholder="Street Address, City, State, Zip">
           </div>
           <div class="col-sm-3 col-md-3">
-            <label for="destination-1">Destination Address</label>
-            <input type="text" class="form-control" id="destination-1" placeholder="Street Address, City, State, Zip">
+            <label for="destination-101">Destination Address</label>
+            <input type="text" class="form-control" id="destination-101" placeholder="Street Address, City, State, Zip">
           </div>
           <div class="col-sm-2 col-md-1">
-            <label for="personal-1">Personal Miles</label>
-            <input type="text" class="form-control" id="personal-1" placeholder="0">
+            <label for="personal-101">Personal Miles</label>
+            <input type="text" class="form-control" id="personal-101" placeholder="0">
           </div>
           <div class="col-sm-2 col-md-1">
-            <label for="calculated-1">Calculated Miles</label>
-            <input type="text" class="form-control" id="calculated-1" placeholder="0" value="" disabled>
+            <label for="calculated-101">Calculated Miles</label>
+            <input type="text" class="form-control" id="calculated-101" placeholder="0" value="" disabled>
           </div>
         </div>
-        <div class="form-group form-row justify-content-center" id="Srow-2">
+        <div class="form-group form-row justify-content-center" id="row-102">
           <div class="col-sm-2 col-md-1">
-            <input type="date" class="form-control" id="date-2">
+            <input type="date" class="form-control" id="date-102">
           </div>
           <div class="col-sm-3 col-md-3">
-            <input type="text" class="form-control" id="origin-2" placeholder="Street Address, City, State, Zip">
+            <input type="text" class="form-control" id="origin-102" placeholder="Street Address, City, State, Zip">
           </div>
           <div class="col-sm-3 col-md-3">
-            <input type="text" class="form-control" id="destination-2" placeholder="Street Address, City, State, Zip">
+            <input type="text" class="form-control" id="destination-102" placeholder="Street Address, City, State, Zip">
           </div>
           <div class="col-sm-2 col-md-1">
-            <input type="text" class="form-control" id="personal-2" placeholder="0">
+            <input type="text" class="form-control" id="personal-102" placeholder="0">
           </div>
           <div class="col-sm-2 col-md-1">
-            <input type="text" class="form-control" id="calculated-2" placeholder="0" disabled>
+            <input type="text" class="form-control" id="calculated-102" placeholder="0" disabled>
           </div>
         </div>
       </form>
       <div class="form-group form-row justify-content-center">
         <a href='#'><i class="fa fa-plus add-row" style="color: blue;"></i></a>
         <a href='#'><i class="fa fa-minus delete-row" style="color: red;"></i></a>
+      </div>
+      <div class="form-group form-row justify-content-center">
+        <button type="button" class="btn btn-outline-success" id="calculate-mileage">Calculate Mileage</button>
+        <button type="button" class="btn btn-outline-danger" id="clear-all">Clear All</button>
       </div>
 
 <!-- Single Question #1 -->
@@ -188,6 +192,7 @@
       
     </section>
 
+  <script src="js/mileage.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/app.js"></script>
   <!-- Optional JavaScript -->
