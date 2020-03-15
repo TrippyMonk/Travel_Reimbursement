@@ -1,38 +1,52 @@
 class Mileage {
     
-    addRow() {
-        //Get mileage form, grab the last div element visible, get the ID attribute, and return the number to the right of Row-
-        const prevRow = document.querySelector('.mileage-form').lastElementChild.getAttribute('id').split('-')[1];
-        const prevRowNum = parseInt(prevRow);
-      
-        //Create a new Div with an ID one number higher than last visible row
-        const div = document.createElement('div');
-        div.className = 'form-group form-row justify-content-center';
-        div.id = `row-${prevRowNum + 1}`;
-      
-        div.innerHTML = `
-          <div class="col-sm-2 col-md-1">
-          <input type="date" id="date-${div.id}" class="form-control">
-          </div>
-          <div class="col-sm-3 col-md-3">
-          <input type="text" id="origin-${div.id}" class="form-control" placeholder="Street Address, City, State, Zip">
-          </div>
-          <div class="col-sm-3 col-md-3">
-          <input type="text" id="destination-${div.id}" class="form-control" placeholder="Street Address, City, State, Zip">
-          </div>
-          <div class="col-sm-2 col-md-1">
-          <input type="text" id="personal-${div.id}" class="form-control" placeholder="0">
-          </div>
-          <div class="col-sm-2 col-md-1">
-          <input type="text" id="calculated-${div.id}" class="form-control" placeholder="0" value="" disabled>
-          </div>`;
-      
-        document.querySelector('.mileage-form').insertAdjacentElement('beforeend', div);
-    }
+  addRow() {
+    //Find out which section is displayed and get Section ID
+    document.querySelectorAll('section').forEach(section => {
+      if(section.classList.contains('d-block')) {
+        let sectionElement = section.getAttribute('id');
+
+      //Get mileage form, grab the last div element visible, get the ID attribute, and return the number to the right of Row-
+      const prevRow = document.getElementById(sectionElement + '-mileage-form').lastElementChild.getAttribute('id').split('-')[1];
+      const prevRowNum = parseInt(prevRow);
+    
+      //Create a new Div with an ID one number higher than last visible row
+      const div = document.createElement('div');
+      div.className = 'form-group form-row justify-content-center';
+      div.id = `row-${prevRowNum + 1}`;
+    
+      div.innerHTML = `
+        <div class="col-sm-2 col-md-1">
+        <input type="date" id="date-${div.id}" class="form-control">
+        </div>
+        <div class="col-sm-3 col-md-3">
+        <input type="text" id="origin-${div.id}" class="form-control" placeholder="Street Address, City, State, Zip">
+        </div>
+        <div class="col-sm-3 col-md-3">
+        <input type="text" id="destination-${div.id}" class="form-control" placeholder="Street Address, City, State, Zip">
+        </div>
+        <div class="col-sm-2 col-md-1">
+        <input type="text" id="personal-${div.id}" class="form-control" placeholder="0">
+        </div>
+        <div class="col-sm-2 col-md-1">
+        <input type="text" id="calculated-${div.id}" class="form-control" placeholder="0" value="" disabled>
+        </div>`;
+    
+      document.getElementById(sectionElement + '-mileage-form').insertAdjacentElement('beforeend', div);
+      }
+    })
+  }
       
     deleteRow() {
-          const selection = document.querySelector('.mileage-form');
+      //Find out which section is displayed and get Section ID
+      document.querySelectorAll('section').forEach(section => {
+        if(section.classList.contains('d-block')) {
+          let sectionElement = section.getAttribute('id');
+
+          const selection = document.getElementById(sectionElement + '-mileage-form');
           selection.removeChild(selection.lastChild);
+        }
+      })
     }
       
     async calculate() {
