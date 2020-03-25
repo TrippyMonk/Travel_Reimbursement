@@ -15,13 +15,13 @@ const addRow = () => {
         <input type="date" id="date-${div.id.split('-')[1]}" class="form-control">
         </div>
         <div class="col-sm-3 col-md-3">
-        <input type="text" id="origin-${div.id.split('-')[1]}" class="form-control" placeholder="Street Address, City, State, Zip">
+        <input type="text" id="origin-${div.id.split('-')[1]}" class="form-control mileage-input" placeholder="Street Address, City, State, Zip">
         </div>
         <div class="col-sm-3 col-md-3">
-        <input type="text" id="destination-${div.id.split('-')[1]}" class="form-control" placeholder="Street Address, City, State, Zip">
+        <input type="text" id="destination-${div.id.split('-')[1]}" class="form-control mileage-input" placeholder="Street Address, City, State, Zip">
         </div>
         <div class="col-sm-2 col-md-1">
-        <input type="text" id="personal-${div.id.split('-')[1]}" class="form-control" placeholder="0">
+        <input type="text" id="personal-${div.id.split('-')[1]}" class="form-control mileage-input" placeholder="0">
         </div>
         <div class="col-sm-2 col-md-1">
         <input type="text" id="calculated-${div.id.split('-')[1]}" class="form-control" placeholder="0" value="" disabled>
@@ -44,7 +44,7 @@ const deleteRow = () => {
 
 const calculate = async () => {
   //Find out which section is displayed and get Section ID
-  const rows = document.querySelectorAll('section').forEach(section => {
+  document.querySelectorAll('section').forEach(section => {
     if (section.classList.contains('d-block')) {
       //Get Row Numbers with a class of mileage-row
       let rowIds = Array.from(section.querySelectorAll('.mileage-row'));
@@ -87,6 +87,17 @@ const calculate = async () => {
         //Insert Reimburseable Mileage in Form
         document.getElementById('calculated-' + rowid).value = mileage;
       });
+    }
+  });
+}
+
+const clearAll = () => {
+  document.querySelectorAll('section').forEach(section => {
+    if (section.classList.contains('d-block')) {
+      let values = section.querySelectorAll('input');
+      values.forEach(value => {
+        value.value = null;
+      })
     }
   });
 }
